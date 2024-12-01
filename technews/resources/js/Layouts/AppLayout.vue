@@ -1,10 +1,12 @@
 <script setup>
-import Navbar from "@/Components/Navbar.vue";
+import Navbar from '@/Components/Navbar.vue'
 </script>
 
 <template>
-    <Navbar />
-    <main>
-        <slot />
-    </main>
+    <div class="container mx-auto">
+        <Navbar />
+        <main>
+            <slot />
+        </main>
+    </div>
 </template>

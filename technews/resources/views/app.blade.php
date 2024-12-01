@@ -11,7 +11,8 @@
     @inertiaHead
 </head>
 
-<body class="">
+<body class="antialiased scroll-smooth font-georama relative bg-slate-50">
+    <img src="{{ url('images/background-image.jpg')}}" class="absolute w-full object-cover" alt="TechNews" />
     @inertia
 </body>
 
