@@ -1,0 +1,43 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: technews
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - technews
+
+  rabbitmq:
+    image: rabbitmq:4.0-management-alpine
+    container_name: rabbitmq
+    environment:
+      DOMAIN_NAME: rabbitmq.localhost
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: rabbit
+      RABBITMQ_DEFAULT_PASS: rabbit123.
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - technews
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    environment:
+      DOMAIN_NAME: mailhog.localhost
+    ports:
+      - '1025:1025'
+      - '1080:1080'
+      - '8025:8025'
+    networks:
+      - technews
+
+networks:
+  technews:
